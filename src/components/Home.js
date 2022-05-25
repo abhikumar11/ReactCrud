@@ -13,7 +13,16 @@ const Home=()=>
     };
     useEffect(()=>{
         loadData();
-    },[])
+    },[]);
+    const deleteData=(email)=>
+    {
+            if(window.confirm("Are you sure"))
+            {
+                axios.post(`http://localhost:3001/api/remove/${email}`);
+                toast.success("Data deleted successfully");
+                setTimeout(()=>loadData(),500);
+            }
+    }
     return(
         <div style={{marginTop:"150px"}}>
             <Link to="/addContact">
@@ -41,8 +50,8 @@ const Home=()=>
                             <Link to={`/update/${item.id}`}>
                             <button className='btn btn-edit'>Edit</button>
                             </Link>
-                            <button className='btn btn-delete'>Delete</button>
-                            <Link to={`/view/${item.id}`}>
+                            <button className='btn btn-delete' onClick={()=>deleteData(item.email)}>Delete</button>
+                            <Link to={`/view/${item.email}`}>
                             <button className='btn btn-view'>View</button>
                             </Link>
                             </td>

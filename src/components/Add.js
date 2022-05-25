@@ -1,6 +1,6 @@
 import axios from "axios";
-import React,{useState,useEffect} from "react";
-import {useNavigate,useParam,Link} from "react-router-dom";
+import React,{useState} from "react";
+import {useNavigate,Link} from "react-router-dom";
 import {toast} from 'react-toastify';
 import './css/AddEdit.css';
 const initialState={
@@ -26,6 +26,7 @@ function AddEdit()
          .then(()=>{setState({name:"",email:"",mob:""});
         })
         .catch((err)=>toast.error(err.response.data));
+        toast.success("Data Saved Successfully");
         setTimeout(()=>his('/'),500);
         }
     }
