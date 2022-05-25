@@ -16,6 +16,9 @@ const Home=()=>
     },[])
     return(
         <div style={{marginTop:"150px"}}>
+            <Link to="/addContact">
+            <button className='btn btn-contact'>Add New</button>
+            </Link>
             <table className='styled-table'>
             <thead>
                 <tr>
